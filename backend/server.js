@@ -1,7 +1,7 @@
-
 require ('dotenv').config()
 
-const express = require("express")
+const express = require("express") // 1
+
 const workoutRoutes = require('./routes/workout')
 const mongoose = require('mongoose')
 
@@ -12,7 +12,7 @@ const app = express()
 app.use(express.json())
 
 
-app.use((req,res,next) =>{
+app.use((req,res,next) => {
     console.log(req.path, req.method)
     next()
 })
