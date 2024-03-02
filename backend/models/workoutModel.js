@@ -1,6 +1,6 @@
-const moongose = require("mongoose");
+const mongoose = require("mongoose");
 
-const Schema = moongose.Schema;
+const Schema = mongoose.Schema;
 
 const workoutSchema = new Schema(
   {
@@ -16,8 +16,9 @@ const workoutSchema = new Schema(
       type: Number,
       required: true,
     },
+    dtime: Date,
   },
   { timestamps: true }
 );
 
-module.exports = moongose.model("Workout", workoutSchema);
+module.exports = mongoose.model("Workout", workoutSchema);

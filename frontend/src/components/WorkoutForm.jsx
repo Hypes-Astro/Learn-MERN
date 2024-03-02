@@ -7,12 +7,15 @@ const WorkoutForm = () => {
   const [title, setTitle] = useState("");
   const [reps, setReps] = useState("");
   const [load, setLoad] = useState("");
+
+  const [dtime, setDtime] = useState("");
+
   const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const workout = { title, reps, load };
+    const workout = { title, reps, load, dtime };
 
     const response = await fetch("/api/workouts", {
       method: "POST",
@@ -32,6 +35,7 @@ const WorkoutForm = () => {
       setLoad("");
       setReps("");
       setTitle("");
+      setDtime("");
       setError(null);
       console.log("Add succed", json);
       dispact({ type: "CREATE_WORKOUT", payload: json });
@@ -68,6 +72,13 @@ const WorkoutForm = () => {
         type="number"
         onChange={(e) => setLoad(e.target.value)}
         value={load}
+      />
+
+      <input
+        className="form border rounded h-10 mt-2"
+        type="datetime-local"
+        onChange={(e) => setDtime(e.target.value)}
+        value={dtime}
       />
 
       <div className="button flex justify-center">
